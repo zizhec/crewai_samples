@@ -18,17 +18,6 @@ generic_assistent = Agent(
     LLM=ChatOpenAI(model="gpt-4o-mini")
     # (optional) llm=another_llm
 )
-math_problem_composer = Agent(
-    role='Math Problem Composer',
-    goal='Compose a math problem',
-    backstory="""As a math problem composer, you can compose a difficult math problem.""",
-    verbose=True,
-    # allow_delegation=True,
-    cache=True,
-    max_tokens=1000,
-    LLM =ChatOpenAI(model="gpt-4o-mini")
-    # (optional) llm=another_llm
-)
 
 result_verifier = Agent(
     role='Result Verifier',
@@ -42,17 +31,6 @@ result_verifier = Agent(
     # (optional) llm=another_llm
 )
 
-final_result_summarizer = Agent(
-    role='Final Result Summarizer',
-    goal='Summarize the final result',
-    backstory="""As a final result summarizer, you can summarize the final result.""",
-    verbose=True,
-    # allow_delegation=True,
-    cache=True,
-    max_tokens = 1000,
-    LLM=ChatOpenAI(model="gpt-4o-mini")
-    # (optional) llm=another_llm
-)
 
 random_integer_generator = Task(
     description="""Generate 4 random positive integers smaller than 12.""",
@@ -90,16 +68,7 @@ crew = Crew(
     # usage_metrics=True
 )
 
-# Instantiate your crew with a sequential process (by default tasks are executed sequentially)
 
-
-# inputs = {
-#     'topic': 'AI LLMs'
-# }
-# crew.kickoff(inputs=inputs)
-
-
-# Kick off the crew to start on it's tasks
 result = crew.kickoff()
 
 print("######################")
