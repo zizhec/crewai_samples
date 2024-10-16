@@ -15,7 +15,7 @@ search_tool = DuckDuckGoSearchRun()
 
 tech_researcher = Agent(
     role='Technology Researcher',
-    goal='Uncover cutting-edge developments in {tech_name}',
+    goal='Uncover cutting-edge developments in {tech_name} for this year, 2024.',
     backstory='You are an expert in technology trends and solutions. You use web search to find comprehensive information about various technologies and their implementations.',
     tools=[search_tool],
     verbose=True,
@@ -79,7 +79,8 @@ task3 = Task(
      Format the table using the tabulate library with headers.
      Ensure all information is concise and fits well in a table format.''',
     agent=report_writer,
-    expected_output="A formatted table containing all the gathered information about the solutions"
+    expected_output="A formatted table containing all the gathered information about the solutions",
+    output_file='output/tech_invest.md'
 )
 
 crew = Crew(

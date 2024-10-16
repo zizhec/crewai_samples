@@ -65,6 +65,12 @@ math_problem_solver = Task(
     expected_output="""A solution for the math problem""",
     # human_input=True
 )
+result_verifier_task = Task(
+    description="""Verify the given solution is correct.""",
+    agent = result_verifier,
+    expected_output="""A boolean indicating whether the solution is correct""",
+    # human_input=True
+)
 final_result_summarizer = Agent(
     role='Final Result Summarizer',
     goal='Summarize the final result',
@@ -79,7 +85,7 @@ final_result_summarizer = Agent(
 
 crew = Crew(
     agents=[math_problem_composer, generic_assistent, result_verifier, final_result_summarizer],
-    tasks=[math_task, math_problem_solver],
+    tasks=[math_task, math_problem_solver, result_verifier_task, ],
     manager_llm=ChatOpenAI(model="gpt-4o-mini"),
     process=Process.sequential,
     verbose=True,
